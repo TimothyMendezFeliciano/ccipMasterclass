@@ -10,7 +10,7 @@ contract CCIPUNSAFE_RECEIVER is CCIPReceiver {
     string public latestMessageText;
     address public latestMessageSender;
 
-    constructor(address router) CCIP(router) {
+    constructor(address router) CCIPReceiver(router) {
 
     }
 

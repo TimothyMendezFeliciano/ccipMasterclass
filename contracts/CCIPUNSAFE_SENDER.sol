@@ -15,7 +15,7 @@ contract CCIPUNSAFE_SENDER {
         LinkTokenInterface(link).approve(router, type(uint256).max);
     }
 
-    function send(address receriver,
+    function send(address receiver,
         uint64 destinationChainSelector,
         string memory someText) external {
         Client.EVM2AnyMessage memory message = Client.EVM2AnyMessage(
@@ -24,9 +24,9 @@ contract CCIPUNSAFE_SENDER {
                 data: abi.encode(someText),
                 tokenAmounts: new Client.EVMTokenAmount[](0),
                 extraArgs: "",
-                feeToken: ""
+                feeToken: link
             }
-        )
+        );
 
         IRouterClient(router).ccipSend(destinationChainSelector, message);
     }
